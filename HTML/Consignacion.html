@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consignaciones Bancarias</title>
+    <link rel="icon" href="img/d52f977512.png" type="image/png">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .encabezado-consignacion{
+            width: 100%;
+            height: 20%;
+            background-color: #025BFF;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .imagen-consignacion, img{
+            width: 200px;
+            padding: 10px;
+        }
+        .imagen-consignacion {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .botones-consignacion{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        button{
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #0b2961;
+            color: white;
+        }
+
+        .datosusuario-consignacion{
+            padding: 30px;
+            line-height: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor-consignacion" class="contenedor-consignacion">
+        <div class="encabezado-consignacion">
+            <h1>CONSIGNACIONES BANCARIAS</h1>
+        </div>
+        <div class="imagen-consignacion">
+            <img id="imagen2" src="img/ingresos.png" alt="Transaccion bancaria">
+        </div>
+        <div class="datosusuario-consignacion">
+            <h2 id="nombreusuario">USUARIO</h2>
+            <p id="cuentausuario">Numero de cuenta</p>
+            <label for="cantidaddinero">CANTIDAD: </label>
+            <input type="number" id="cantidaddinero" name="cantidaddinero" placeholder="$0,00">
+        </div>
+        <div class="botones-consignacion">
+            <button id="botonaceptar2">ACEPTAR</button>
+            <button id="botoncancelar2">CANCELAR</button>
+        </div>
+    </div>
+</body>
+</html>

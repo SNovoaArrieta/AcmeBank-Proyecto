@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extractos Bancarios</title>
+    <link rel="icon" href="img/d52f977512.png" type="image/png">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .encabezado-extracto{
+            width: 100%;
+            height: 20%;
+            background-color: #025BFF;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .imagen-extracto, img{
+            width: 200px;
+            padding: 10px;
+        }
+        .imagen-extracto {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .botones-extracto{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        button{
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #0b2961;
+            color: white;
+        }
+
+        .datosusuario-extracto{
+            padding: 30px;
+            line-height: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor-extracto" class="contenedor-extracto">
+        <div class="encabezado-extracto">
+            <h1>EXTRACTO BANCARIO</h1>
+        </div>
+        <div class="imagen-extracto">
+            <img id="imagen3" src="img/extracto-de-cuenta.png" alt="extracto bancario">
+        </div>
+        <div class="datosusuario-extracto">
+            <h2 id="nombreusuario3">USUARIO</h2>
+            <p id="cuentausuario3">Numero de cuenta</p>
+            <label for="fecha">FECHA: </label>
+            <input type="number" id="anio" name="anio" min="2020" max="2025" step="1" placeholder="2025">
+        </div>
+        <div class="botones-extracto">
+            <button id="botonaceptar4">ACEPTAR</button>
+            <button id="botoncancelar4">CANCELAR</button>
+        </div>
+    </div>
+</body>
+</html>

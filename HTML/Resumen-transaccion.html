@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen transacciones Bancarias</title>
+    <link rel="icon" href="img/d52f977512.png" type="image/png">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .encabezado-resumen{
+            width: 100%;
+            height: 20%;
+            background-color: blue;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .imagen-resumen, img{
+            width: 200px;
+            padding: 20px;
+        }
+        .imagen-resumen {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .botones-resumen{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        button{
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #0b2961;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor-resumen" class="contenedor-resumen">
+        <div class="encabezado-resumen">
+            <h1>RESUMEN TRANSACCIONES</h1>
+        </div>
+        <div class="imagen-resumen">
+            <img id="imagen1" src="img/transaccion.png" alt="Transaccion bancaria">
+        </div>
+        <div class="resumen-transacciones">
+
+        </div>
+        <div class="botones-resumen">
+            <button id="botonimprimir1">IMPRIMIR</button>
+            <button id="botoncancelar1">CANCELAR</button>
+        </div>
+    </div>
+</body>
+</html>

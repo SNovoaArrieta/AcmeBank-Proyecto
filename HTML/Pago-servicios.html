@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago de Servicios</title>
+    <link rel="icon" href="img/d52f977512.png" type="image/png">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .encabezado-servicios{
+            width: 100%;
+            height: 20%;
+            background-color: #025BFF;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .imagen-servicios, img{
+            width: 200px;
+            padding: 10px;
+        }
+        .imagen-servicios {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .botones-servicios{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button{
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #0b2961;
+            color: white;
+        }
+
+        .datosusuario-servicios{
+            padding: 30px;
+            line-height: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor-servicios" class="contenedor-servicios">
+        <div class="encabezado-servicios">
+            <h1>PAGO DE SERVICIOS</h1>
+        </div>
+        <div class="imagen-servicios">
+            <img id="imagen4" src="img/en-linea.png" alt="Servicios publicos">
+        </div>
+        <div class="datosusuario-servicios">
+            <h2 id="nombreusuario4">USUARIO</h2>
+            <p id="cuentausuario4">Numero de cuenta</p>
+            <label for="opciones">Que servicio va a pagar:</label>
+            <select id="opciones" name="opciones">
+            <option value="">-- Selecciona --</option>
+            <option value="1">Electricidad</option>
+            <option value="2">Agua</option>
+            <option value="3">Gas</option>
+            <option value="4">Internet</option>
+            </select>
+            <label for="referencia">Ingrese la referencia de la factura: </label>
+            <input type="number" id="referencia" name="referencia" placeholder="0000000000">
+            <label for="valorfactura">Ingrese el valor a pagar de la factura: </label>
+            <input type="number" id="valorfactura" name="valorfactura" placeholder="$0,00">
+        </div>
+        <div class="botones-servicios">
+            <button id="botonaceptar5">ACEPTAR</button>
+            <button id="botoncancelar5">CANCELAR</button>
+        </div>
+    </div>
+</body>
+</html>

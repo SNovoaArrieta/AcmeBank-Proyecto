@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio - ACME BANK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .encabezado {
+            background-color: #025BFF;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .icono {
+            width: 38px;
+            height: 38px;
+            background-color: #0b2961;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .icono img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .menu-icono {
+            left: 15px;
+        }
+
+        .config-icono {
+            right: 15px;
+        }
+
+        .logo {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .logo img {
+            width: 180px;
+        }
+
+        .usuario {
+            font-size: 20px;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .saldo-box {
+            background-color: #d4ccf9;
+            width: 65%;
+            margin: 60px auto 60px auto;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            position: relative;
+            box-shadow: 5px 5px 0px #2300c2;
+        }
+
+        .botones-footer {
+            background-color: #0275ff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 0;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .botones-footer button {
+            background-color: #e6e6fa;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .botones-footer img {
+            width: 28px;
+            height: 28px;
+        }
+
+        @media (max-width: 450px) {
+            .saldo-box {
+                font-size: 16px;
+                width: 85%;
+            }
+
+            .botones-footer button {
+                width: 55px;
+                height: 55px;
+            }
+
+            .botones-footer img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenedor">
+        <div class="encabezado">
+            <div class="icono menu-icono">
+                <img src="img/preferencias.png" alt="Menú">
+            </div>
+            <div class="icono config-icono">
+                <img src="img/engranaje.png" alt="Configuración">
+            </div>
+            <div class="logo">
+                <!-- LOGO de ACME BANK -->
+                <img src="img/d52f977512.png" alt="ACME BANK">
+            </div>
+            <div class="usuario">
+                <p>HOLA <strong>“USUARIO”</strong><br>
+                    <span style="font-weight: normal;"># cuenta</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="saldo-box">
+            <p>Saldo disponible<br>
+                $ xxx.xxx</p>
+        </div>
+
+        <div class="botones-footer">
+            <button onclick="alert('Ir a Pagos')">
+                <img src="img/enviar-dinero.png" alt="Pago">
+            </button>
+            <button onclick="alert('Ir a Inicio')">
+                <img src="img/hogar.png" alt="Inicio">
+            </button>
+            <button onclick="alert('Ir a Retiro')">
+                <img src="img/retiro.png" alt="Retiro">
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,79 +1,227 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consignaciones Bancarias</title>
     <link rel="icon" href="img/d52f977512.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        .encabezado-consignacion{
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .contenedor-consignacion {
             width: 100%;
-            height: 20%;
+            max-width: 420px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .encabezado-consignacion {
             background-color: #025BFF;
             text-align: center;
-            padding: 20px;
-            margin-bottom: 10px;
+            padding: 25px 15px;
             color: white;
         }
-        .imagen-consignacion, img{
-            width: 200px;
-            padding: 10px;
+
+        .encabezado-consignacion h1 {
+            font-size: 20px;
+            letter-spacing: 1px;
         }
+
         .imagen-consignacion {
-            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px 0;
         }
-        .botones-consignacion{
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
 
+        .imagen-consignacion img {
+            width: 140px;
         }
-        button{
-            margin: 5px;
+
+        .datosusuario-consignacion {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .datosusuario-consignacion h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .datosusuario-consignacion p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .datosusuario-consignacion label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .datosusuario-consignacion input[type="number"] {
+            width: 100%;
             padding: 10px;
-            cursor: pointer;
-            background-color: #0b2961;
-            color: white;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border 0.3s;
         }
 
-        .datosusuario-consignacion{
-            padding: 30px;
-            line-height: 2;
+        .datosusuario-consignacion input:focus {
+            border-color: #025BFF;
+        }
+
+        .botones-consignacion {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            padding: 0 20px 20px;
+        }
+
+        .botones-consignacion button {
+            flex: 1;
+            padding: 12px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #botonaceptar2 {
+            background-color: #0b2961;
+        }
+
+        #botonaceptar2:hover {
+            background-color: #2060d6;
+        }
+
+        #botoncancelar2 {
+            background-color: #0b2961;
+        }
+
+        #botoncancelar2:hover {
+            background-color: #2060d6;
+        }
+
+        .barra-interna-opciones {
+        margin: 20px auto 1px;
+        padding: 15px 10px;
+        background-color: #025BFF;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        }
+
+        .barra-interna-opciones .opcion {
+        width: 70px;
+        height: 70px;
+        background-color: #e0e0e0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s ease;
+        }
+
+        .barra-interna-opciones .opcion:hover {
+        transform: scale(1.05);
+        }
+
+        .barra-interna-opciones img {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        }
+
+
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .encabezado-consignacion h1 {
+                font-size: 18px;
+            }
+
+            .datosusuario-consignacion h2 {
+                font-size: 16px;
+            }
+
+            .imagen-consignacion img {
+                width: 100px;
+            }
         }
     </style>
 </head>
+
 <body>
     <div id="contenedor-consignacion" class="contenedor-consignacion">
         <div class="encabezado-consignacion">
             <h1>CONSIGNACIONES BANCARIAS</h1>
         </div>
+
         <div class="imagen-consignacion">
-            <img id="imagen2" src="img/ingresos.png" alt="Transaccion bancaria">
+            <img id="imagen2" src="img/crecimiento.png" alt="Transacción bancaria">
         </div>
+
         <div class="datosusuario-consignacion">
             <h2 id="nombreusuario">USUARIO</h2>
-            <p id="cuentausuario">Numero de cuenta</p>
-            <label for="cantidaddinero">CANTIDAD: </label>
+            <p id="cuentausuario">Número de cuenta</p>
+
+            <label for="cantidaddinero">CANTIDAD:</label>
             <input type="number" id="cantidaddinero" name="cantidaddinero" placeholder="$0,00">
         </div>
+
         <div class="botones-consignacion">
             <button id="botonaceptar2">ACEPTAR</button>
             <button id="botoncancelar2">CANCELAR</button>
         </div>
+        <!-- Barra inferior fija con botón -->
+        <div class="barra-interna-opciones">
+        <div class="opcion">
+            <a href="consignar.html" title="Consignar">
+            <img src="img/enviar-dinero.png" alt="Consignar">
+            </a>
+        </div>
+        <div class="opcion">
+            <a href="historial.html" title="Historial">
+            <img src="img/hogar.png" alt="Historial">
+            </a>
+        </div>
+        <div class="opcion">
+            <a href="retirar.html" title="Retirar">
+            <img src="img/retiro.png" alt="Retirar">
+            </a>
+        </div>
+        </div>
     </div>
 </body>
+
 </html>

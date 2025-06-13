@@ -27,6 +27,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .encabezado {
@@ -120,6 +121,36 @@
             height: 28px;
         }
 
+        /* Menú desplegable */
+        .menu-desplegable {
+            position: absolute;
+            top: 65px;
+            left: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            width: 160px;
+        }
+
+        .menu-desplegable a {
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .menu-desplegable a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .menu-desplegable a:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 450px) {
             .saldo-box {
                 font-size: 16px;
@@ -142,20 +173,29 @@
 <body>
     <div class="contenedor">
         <div class="encabezado">
-            <div class="icono menu-icono">
+            <div class="icono menu-icono" onclick="toggleMenu()">
                 <img src="img/preferencias.png" alt="Menú">
             </div>
             <div class="icono config-icono">
                 <img src="img/engranaje.png" alt="Configuración">
             </div>
             <div class="logo">
-                <!-- LOGO de ACME BANK -->
                 <img src="img/d52f977512.png" alt="ACME BANK">
             </div>
             <div class="usuario">
                 <p>HOLA <strong>“USUARIO”</strong><br>
                     <span style="font-weight: normal;"># cuenta</span>
                 </p>
+            </div>
+
+            <!-- Menú desplegable -->
+            <div class="menu-desplegable" id="menuDesplegable">
+                <a href="inicio.html">Página de inicio</a>
+                <a href="Consignacion.html">Consignación Bancaria</a>
+                <a href="Retiro.html">Retiro Bancario</a>
+                <a href="Pago-servicios.html">Pago de servicios</a>
+                <a href="Extracto-bancario.html">Extracto Bancario</a>
+                <a href="#">Certificado Bancario</a>
             </div>
         </div>
 
@@ -165,17 +205,33 @@
         </div>
 
         <div class="botones-footer">
-            <button onclick="alert('Ir a Pagos')">
+            <button onclick="window.location.href='Consignacion.html'">
                 <img src="img/enviar-dinero.png" alt="Pago">
             </button>
-            <button onclick="alert('Ir a Inicio')">
+            <button onclick="window.location.href='inicio.html'">
                 <img src="img/hogar.png" alt="Inicio">
             </button>
-            <button onclick="alert('Ir a Retiro')">
+            <button onclick="window.location.href='Retiro.html'">
                 <img src="img/retiro.png" alt="Retiro">
             </button>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menuDesplegable");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+
+        // Opcional: cerrar el menú al hacer clic fuera
+        window.addEventListener("click", function (e) {
+            const menu = document.getElementById("menuDesplegable");
+            const button = document.querySelector(".menu-icono");
+            if (!menu.contains(e.target) && !button.contains(e.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
 </body>
 
 </html>

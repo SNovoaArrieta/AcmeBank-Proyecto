@@ -14,18 +14,22 @@
         <img src="/Static/img/d52f977512 (1).png" alt="">
       </div>
 
-      <select class="input">
-        <option>TIPO DE IDENTIFICACION</option>
-        <option>Cédula</option>
-        <option>Pasaporte</option>
-        <option>Otro</option>
-      </select>
+     
+
+     <select id="tipoId" required>
+       <option value="">TIPO DE IDENTIFICACION</option>
+       <option value="CC">CC</option>
+       <option value="TI">TI</option>
+       <option value="CE">CE</option>
+     </select>
 
       <input type="text" class="input" placeholder="IDENTIFICACION" />
       <input type="email" class="input" placeholder="CORREO ELECTRONICO" />
     </div>
+    <a href="/Temples/inicio.html">
+       <button class="submit-btn">ENVIAR</button>
+    </a>
 
-    <button class="submit-btn">ENVIAR</button>
   </div>
 </body>
 </html>

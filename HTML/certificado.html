@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificado Bancario</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .certificado {
+            background-color: #ffffff;
+            border: 2px solid #025BFF;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #025BFF;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        button {
+            margin-top: 20px;
+            background-color: #025BFF;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #003ecb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="certificado" id="certificado">
+        <h2>Certificado Bancario</h2>
+        <p id="nombre"></p>
+        <p id="cuenta"></p>
+        <p id="estado"></p>
+        <p id="fecha"></p>
+        <button onclick="window.print()">Imprimir</button>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
+            authDomain: "acme-bank-a0686.firebaseapp.com",
+            projectId: "acme-bank-a0686",
+            storageBucket: "acme-bank-a0686.firebasestorage.app",
+            messagingSenderId: "302724149232",
+            appId: "1:302724149232:web:9a84221b967416e2933735"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const identificacionUsuario = localStorage.getItem("identificacionUsuario");
+
+        async function cargarCertificado() {
+            if (!identificacionUsuario) return;
+
+            const refUsuario = doc(db, "usuarios", identificacionUsuario);
+            const docSnap = await getDoc(refUsuario);
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                document.getElementById("nombre").textContent = `Titular de la cuenta: ${data.nombre} ${data.apellidos}`;
+                document.getElementById("cuenta").textContent = `Número de cuenta: ${identificacionUsuario}`;
+                document.getElementById("estado").textContent = `Estado de la cuenta: Activa`;
+                document.getElementById("fecha").textContent = `Fecha de emisión: ${new Date().toLocaleDateString()}`;
+            } else {
+                document.getElementById("certificado").innerHTML = "<p>No se encontró el usuario</p>";
+            }
+        }
+
+        cargarCertificado();
+    </script>
+</body>
+
+</html>

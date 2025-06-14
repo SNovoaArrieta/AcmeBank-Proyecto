@@ -7,8 +7,8 @@
     <title>Retiro de dinero</title>
     <link rel="icon" href="img/d52f977512.png" type="image/png" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-
     <style>
+        /* Estilos existentes... */
         * {
             margin: 0;
             padding: 0;
@@ -192,7 +192,6 @@
             <button id="botoncancelar3">CANCELAR</button>
         </div>
 
-        <!-- Barra inferior -->
         <div class="barra-interna-opciones">
             <div class="opcion">
                 <a href="Consignacion.html" title="Consignar">
@@ -211,6 +210,41 @@
             </div>
         </div>
     </div>
+
+    <!-- SCRIPT de retiro -->
+    <script>
+        document.getElementById("botonaceptar3").addEventListener("click", function () {
+            const cantidad = parseFloat(document.getElementById("cantidaddinero2").value);
+            if (isNaN(cantidad) || cantidad <= 0) {
+                alert("Por favor ingresa una cantidad válida.");
+                return;
+            }
+
+            const fecha = new Date().toLocaleString();
+            const referencia = Math.floor(Math.random() * 1000000000);
+            const tipo = "Retiro";
+            const concepto = "Retiro en canal electrónico";
+
+            const datos = {
+                fecha,
+                referencia,
+                tipo,
+                concepto,
+                valor: cantidad
+            };
+
+            localStorage.setItem("comprobante", JSON.stringify(datos));
+
+            // Abrir la nueva ventana con el comprobante
+            window.open("comprobante.html", "_blank");
+        });
+
+
+        document.getElementById("botoncancelar3").addEventListener("click", function () {
+            // ✅ Redirige al inicio
+            window.location.href = "inicio.html";
+        });
+    </script>
 </body>
 
 </html>

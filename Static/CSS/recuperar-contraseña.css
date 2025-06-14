@@ -69,3 +69,20 @@ body {
 .submit-btn:hover {
   background-color: #2100cc;
 }
+
+input,
+select,
+button {
+ padding: 10px;
+ border-radius: 12px;
+ border: none;
+ font-size: 14px;
+}
+
+
+input,
+select {
+ background-color: #007bff;
+ color: white;
+ text-align: center;
+}

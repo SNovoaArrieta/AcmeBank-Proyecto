@@ -97,3 +97,21 @@ body {
   border-bottom: 1px solid white;
   padding-bottom: 2px;
 }
+
+
+input,
+select,
+button {
+ padding: 10px;
+ border-radius: 12px;
+ border: none;
+ font-size: 14px;
+}
+
+
+input,
+select {
+ background-color: #007bff;
+ color: white;
+ text-align: center;
+}

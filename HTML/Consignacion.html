@@ -223,33 +223,44 @@
         </div>
     </div>
     <script>
-        document.getElementById("botonaceptar2").addEventListener("click", function () {
-            const cantidad = parseFloat(document.getElementById("cantidaddinero").value);
-            if (isNaN(cantidad) || cantidad <= 0) {
-                alert("Por favor ingresa una cantidad válida.");
-                return;
-            }
+            // Mostrar nombre y número de cuenta del usuario
+    const nombre = localStorage.getItem("nombreUsuario");
+    const numeroCuenta = localStorage.getItem("numeroCuenta");
 
-            const fecha = new Date().toLocaleString();
-            const referencia = Math.floor(Math.random() * 1000000000);
-            const tipo = "Consignación";
-            const concepto = "Consignación por canal electrónico";
+    if (nombre && numeroCuenta) {
+        document.getElementById("nombreusuario").textContent = nombre.toUpperCase();
+        document.getElementById("cuentausuario").textContent = `Cuenta No. ${numeroCuenta}`;
+    } else {
+        alert("⚠️ No se encontró información del usuario. Vuelve a iniciar sesión.");
+    }
 
-            const datos = {
-                fecha,
-                referencia,
-                tipo,
-                concepto,
-                valor: cantidad
-            };
+    document.getElementById("botonaceptar2").addEventListener("click", function () {
+        const cantidad = parseFloat(document.getElementById("cantidaddinero").value);
+        if (isNaN(cantidad) || cantidad <= 0) {
+            alert("Por favor ingresa una cantidad válida.");
+            return;
+        }
 
-            localStorage.setItem("comprobante", JSON.stringify(datos));
-            window.open("comprobante.html", "_blank");
-        });
+        const fecha = new Date().toLocaleString();
+        const referencia = Math.floor(Math.random() * 1000000000);
+        const tipo = "Consignación";
+        const concepto = "Consignación por canal electrónico";
 
-        document.getElementById("botoncancelar2").addEventListener("click", function () {
-            window.location.href = "inicio.html";
-        });
+        const datos = {
+            fecha,
+            referencia,
+            tipo,
+            concepto,
+            valor: cantidad
+        };
+
+        localStorage.setItem("comprobante", JSON.stringify(datos));
+        window.open("comprobante.html", "_blank");
+    });
+
+    document.getElementById("botoncancelar2").addEventListener("click", function () {
+        window.location.href = "inicio.html";
+    });
     </script>
 </body>
 

@@ -142,8 +142,14 @@
 <body>
     <div id="contenedor-resumen" class="contenedor-resumen">
         <div class="encabezado-resumen">
-            <h1>RESUMEN TRANSACCIONES</h1>
+            <div class="encabezado-resumen">
+                <h1>RESUMEN TRANSACCIONES</h1>
+                <p id="nombreUsuario" style="margin-top: 10px; font-weight: bold;"></p>
+                <p id="numeroCuenta" style="font-size: 14px;"></p>
+            </div>
         </div>
+
+
 
         <div class="imagen-resumen">
             <img id="imagen1" src="img/transaccion (1).png" alt="Transacción bancaria" />
@@ -179,7 +185,16 @@
     <script type="module">
         // Firebase imports
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import {
+            getFirestore,
+            collection,
+            doc,
+            getDoc,
+            getDocs,
+            query,
+            orderBy,
+            limit
+        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
@@ -194,18 +209,36 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Aquí debes obtener la identificación del usuario (por ejemplo desde localStorage)
-        const identificacionUsuario = localStorage.getItem("identificacionUsuario"); // asegúrate que esté guardado así
+        const identificacionUsuario = localStorage.getItem("identificacionUsuario");
 
-        // Referencia a la subcolección "transacciones" dentro del documento del usuario
-        const transaccionesRef = collection(doc(db, "usuarios", identificacionUsuario), "transacciones");
+        // ✅ Cargar nombre y cuenta del usuario
+        async function cargarDatosUsuario() {
+            if (!identificacionUsuario) return;
 
-        // Consulta de las últimas 10 transacciones ordenadas por fecha
-        const q = query(transaccionesRef, orderBy("fecha", "desc"), limit(10));
+            const docRef = doc(db, "usuarios", identificacionUsuario);
+            const docSnap = await getDoc(docRef);
 
-        const contenedorResumen = document.querySelector(".resumen-transacciones");
+            if (docSnap.exists()) {
+                const datos = docSnap.data();
+                document.getElementById("nombreUsuario").textContent = datos.nombre?.toUpperCase() || "USUARIO";
+                document.getElementById("numeroCuenta").textContent = `Cuenta: # ${datos.numeroCuenta || 'no disponible'}`;
+            } else {
+                document.getElementById("nombreUsuario").textContent = "USUARIO NO ENCONTRADO";
+            }
+        }
 
+        // ✅ Cargar transacciones
         async function cargarTransacciones() {
+            const contenedorResumen = document.querySelector(".resumen-transacciones");
+
+            if (!identificacionUsuario) {
+                contenedorResumen.innerHTML = "<p>Usuario no identificado.</p>";
+                return;
+            }
+
+            const transaccionesRef = collection(doc(db, "usuarios", identificacionUsuario), "transacciones");
+            const q = query(transaccionesRef, orderBy("fecha", "desc"), limit(10));
+
             try {
                 const snapshot = await getDocs(q);
 
@@ -219,13 +252,13 @@
                     const data = doc.data();
                     const fecha = new Date(data.fecha.seconds * 1000).toLocaleString();
                     html += `
-                <p><strong>Fecha:</strong> ${fecha}</p>
-                <p><strong>Referencia:</strong> ${data.referencia}</p>
-                <p><strong>Tipo:</strong> ${data.tipo}</p>
-                <p><strong>Concepto:</strong> ${data.concepto}</p>
-                <p><strong>Valor:</strong> $${data.valor.toLocaleString()}</p>
-                <hr/>
-            `;
+                    <p><strong>Fecha:</strong> ${fecha}</p>
+                    <p><strong>Referencia:</strong> ${data.referencia}</p>
+                    <p><strong>Tipo:</strong> ${data.tipo}</p>
+                    <p><strong>Concepto:</strong> ${data.concepto}</p>
+                    <p><strong>Valor:</strong> $${data.valor.toLocaleString()}</p>
+                    <hr/>
+                `;
                 });
 
                 contenedorResumen.innerHTML = html;
@@ -236,9 +269,11 @@
             }
         }
 
+        // Ejecutar funciones
+        cargarDatosUsuario();
         cargarTransacciones();
 
-        // Función para imprimir
+        // Botón imprimir
         document.getElementById("botonimprimir1").addEventListener("click", () => {
             window.print();
         });

@@ -230,64 +230,80 @@
             </div>
         </div>
     </div>
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
-        authDomain: "acme-bank-a0686.firebaseapp.com",
-        projectId: "acme-bank-a0686",
-        storageBucket: "acme-bank-a0686.firebasestorage.app",
-        messagingSenderId: "302724149232",
-        appId: "1:302724149232:web:9a84221b967416e2933735"
-    };
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    document.getElementById("botonaceptar5").addEventListener("click", async () => {
-        const servicio = document.getElementById("opciones").value;
-        const referenciaFactura = document.getElementById("referencia").value;
-        const valorFactura = document.getElementById("valorfactura").value;
-
-        if (!servicio || !referenciaFactura || !valorFactura) {
-            alert("Por favor completa todos los campos.");
-            return;
-        }
-
-        const serviciosNombres = {
-            1: "Electricidad",
-            2: "Agua",
-            3: "Gas",
-            4: "Internet"
+        const firebaseConfig = {
+            apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
+            authDomain: "acme-bank-a0686.firebaseapp.com",
+            projectId: "acme-bank-a0686",
+            storageBucket: "acme-bank-a0686.firebasestorage.app",
+            messagingSenderId: "302724149232",
+            appId: "1:302724149232:web:9a84221b967416e2933735"
         };
 
-        const fecha = new Date().toLocaleString("es-CO");
-        const referenciaAleatoria = "REF" + Math.floor(Math.random() * 1000000000);
-        const tipoTransaccion = "Pago de servicios";
-        const concepto = `Pago de servicio público ${serviciosNombres[servicio]}`;
-        const valor = parseFloat(valorFactura);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-        const datos = {
-            fecha,
-            referencia: referenciaAleatoria,
-            tipo: tipoTransaccion,
-            concepto,
-            valor
-        };
+        document.getElementById("botonaceptar5").addEventListener("click", async () => {
+            const servicio = document.getElementById("opciones").value;
+            const referenciaFactura = document.getElementById("referencia").value;
+            const valorFactura = document.getElementById("valorfactura").value;
 
-        localStorage.setItem("comprobanteServicio", JSON.stringify(datos));
-        window.open("comprobante.html", "_blank");
+            if (!servicio || !referenciaFactura || !valorFactura) {
+                alert("Por favor completa todos los campos.");
+                return;
+            }
 
-        try {
-            await addDoc(collection(db, "transacciones"), datos);
-            console.log("Transacción guardada en Firebase.");
-        } catch (error) {
-            console.error("Error al guardar en Firebase:", error);
+            const serviciosNombres = {
+                1: "Electricidad",
+                2: "Agua",
+                3: "Gas",
+                4: "Internet"
+            };
+
+            const fecha = new Date().toLocaleString("es-CO");
+            const referenciaAleatoria = "REF" + Math.floor(Math.random() * 1000000000);
+            const tipoTransaccion = "Pago de servicios";
+            const concepto = `Pago de servicio público ${serviciosNombres[servicio]}`;
+            const valor = parseFloat(valorFactura);
+
+            const datos = {
+                fecha,
+                referencia: referenciaAleatoria,
+                tipo: tipoTransaccion,
+                concepto,
+                valor
+            };
+
+            localStorage.setItem("comprobanteServicio", JSON.stringify(datos));
+            window.open("comprobante.html", "_blank");
+
+            try {
+                await addDoc(collection(db, "transacciones"), datos);
+                console.log("Transacción guardada en Firebase.");
+            } catch (error) {
+                console.error("Error al guardar en Firebase:", error);
+            }
+        });
+    </script>
+
+    <!-- Script para cargar nombre y cuenta desde localStorage -->
+    <script>
+        const nombre = localStorage.getItem("nombreUsuario");
+        const cuenta = localStorage.getItem("numeroCuenta");
+
+        if (nombre) {
+            document.getElementById("nombreusuario4").textContent = nombre;
         }
-    });
-</script>
 
+        if (cuenta) {
+            document.getElementById("cuentausuario4").textContent = `Cuenta N° ${cuenta}`;
+        }
+    </script>
 </body>
+
 </html>

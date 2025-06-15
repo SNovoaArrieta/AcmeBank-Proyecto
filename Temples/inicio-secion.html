@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión - ACME Bank</title>
+  <link rel="stylesheet" href="/Static/CSS/inicio-sesion.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <div class="logo">
+        <img src="/Static/img/d52f977512.png" alt="Logo">
+      </div>
+      <form id="formLogin">
+        <select id="tipoId" required>
+          <option value="">TIPO DE IDENTIFICACIÓN</option>
+          <option value="CC">CC</option>
+          <option value="TI">TI</option>
+          <option value="CE">CE</option>
+        </select>
+
+        <input type="text" id="identificacion" class="input" placeholder="IDENTIFICACIÓN" required />
+        <input type="password" id="contrasena" class="input" placeholder="CONTRASEÑA" required />
+
+        <button type="submit" class="submit-btn">INGRESAR</button>
+
+        <p id="mensaje"></p>
+      </form>
+
+      <a href="/Temples/recuperar-contraseña.html">¿Olvidaste tu contraseña?</a>
+    </div>
+  </div>
+
+  <script type="module" src="/Static/JS/recuperar-contraseña.js"></script>
+</body>
+</html>

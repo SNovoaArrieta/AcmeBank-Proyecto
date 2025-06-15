@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ACME Bank</title>
-  <link rel="stylesheet" href="/Static/CSS/inicio-sesion.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recuperar contraseña</title>
+  <link rel="stylesheet" href="/Static/CSS/recuperar-contraseña.css">
 </head>
 <body>
-  <div class="container">
-    <div class="form-box">
-      <div class="logo">
-        <div class="icono"></div>
-        <img src="/Static/img/d52f977512 (1).png" alt="">
-      </div>
-
-     
-
-     <select id="tipoId" required>
-       <option value="">TIPO DE IDENTIFICACION</option>
-       <option value="CC">CC</option>
-       <option value="TI">TI</option>
-       <option value="CE">CE</option>
-     </select>
-
-      <input type="text" class="input" placeholder="IDENTIFICACION" />
-      <input type="email" class="input" placeholder="CORREO ELECTRONICO" />
-    </div>
-    <a href="/Temples/inicio.html">
-       <button class="submit-btn">ENVIAR</button>
-    </a>
-
+  <main>
+    <div id="logo">
+    <img src="/Static/img/d52f977512.png" alt="ACME Bank Logo" />
+  
   </div>
+    <h1>Recuperar Contraseña</h1>
+
+    <form id="form-recuperar">
+      <label for="tipoId">Tipo de identificación:</label>
+      <select id="tipoId" required>
+        <option value="">Seleccione</option>
+        <option value="CC">Cédula</option>
+        <option value="TI">Tarjeta de Identidad</option>
+      </select>
+
+      <label for="identificacion">Número de identificación:</label>
+      <input type="text" id="identificacion" required>
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" required>
+
+      <button type="submit">Verificar datos</button>
+      <button type="button" id="btn-cancelar">Cancelar</button>
+    </form>
+
+    <form id="form-nueva-clave" style="display: none;">
+      <label for="newPassword">Nueva contraseña:</label>
+      <input type="password" id="newPassword" required>
+      <button type="button" id="toggleNewPassword"></button>
+
+      <label for="confirmPassword">Confirmar contraseña:</label>
+      <input type="password" id="confirmPassword" required>
+      <button type="button" id="toggleConfirmPassword"></button>
+
+      <button type="submit">Cambiar contraseña</button>
+      
+    </form>
+
+    <p id="mensaje"></p>
+  </main>
+
+  <script type="module" src="/Static/JS/recuperar-contraseña.js"></script>
 </body>
 </html>

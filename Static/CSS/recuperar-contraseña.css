@@ -2,87 +2,241 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
 }
 
 body {
-  background-color: #f2f2f2;
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.container {
-  width: 560px;
-  height:auto;
-  background-color: white;
+main {
+  background: white;
+  width: 100%;
+  max-width: 500px;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  padding-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.form-box {
-  background-color: #2b00ff;
-  padding: 30px 20px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+h1 {
+  display: none;
+}
+
+form#form-recuperar {
+  background-color: #1700ff;
+  padding: 50px 40px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  border-radius: 0 0 20px 20px;
 }
 
-.logo {
-  text-align: center;
-  color: white;
+#logo {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.logo img{
-  width: 150px; 
+#logo img {
+  width: 300px;
+  height: 60px;
+  object-fit: contain;
+  margin-top: 10px;
 }
 
 
-.input {
+form#form-recuperar label {
+  display: none;
+}
+
+form#form-recuperar select,
+form#form-recuperar input {
   width: 100%;
-  padding: 12px;
+  max-width: 500px;
+  padding: 12px 16px;
+  margin: 10px 0;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
   font-size: 14px;
+  font-weight: 500;
   text-align: center;
+  outline: none;
 }
 
-.submit-btn {
-  margin: 30px auto 0 auto;
-  display: block;
-  background-color: #2b00ff;
+form#form-recuperar button[type="submit"],
+form#form-recuperar button#btn-cancelar {
+  width: 200px;
+  padding: 12px 24px;
+  margin: 15px auto 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form#form-recuperar button[type="submit"] {
+  background-color: #f7f7f7;
+  color: rgb(0, 0, 0);
+}
+
+form#form-recuperar button[type="submit"]:hover {
+  background-color: #0d00b2;
+}
+
+form#form-recuperar button#btn-cancelar {
+  background-color: white;
+  color: #1700ff;
+  border: 2px solid #1700ff;
+  margin-top: 10px;
+}
+
+form#form-recuperar button#btn-cancelar:hover {
+  background-color: #f0f0f0;
+}
+
+#mensaje {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ccc;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+main {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+#logo img {
+  max-width: 80px;
+  margin-bottom: 10px;
+}
+
+#logo h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form label {
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 480px) {
+  .form-row {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+button {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:disabled {
+  background-color: #ddd;
+  color: #888;
+  cursor: not-allowed;
+  border: none;
+}
+
+#btn-cambiar {
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 12px 30px;
-  border-radius: 10px;
+}
+
+#btn-cambiar:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+#btn-cancelar {
+  background-color: transparent;
+  border: 2px solid #007bff;
+  color: #007bff;
+  margin-top: 10px;
+}
+
+#btn-cancelar:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+#mensaje {
+  margin-top: 20px;
+  color: #e63946;
+  text-align: center;
+  font-weight: bold;
   font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.submit-btn:hover {
-  background-color: #2100cc;
-}
-
-input,
-select,
-button {
- padding: 10px;
- border-radius: 12px;
- border: none;
- font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 
-input,
-select {
- background-color: #007bff;
- color: white;
- text-align: center;
-}

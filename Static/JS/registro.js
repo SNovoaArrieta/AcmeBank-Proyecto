@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
@@ -16,9 +16,9 @@ const form = document.getElementById("formUsuario");
 
 // 🔢 Función para generar número de cuenta aleatorio
 function generarNumeroCuenta() {
-  const prefijo = "41"; // puedes cambiarlo según el formato de tu banco
-  const numeroAleatorio = Math.floor(100000000 + Math.random() * 900000000); // 9 dígitos
-  return prefijo + numeroAleatorio; // Total: 11 dígitos con prefijo
+  const prefijo = "41"; 
+  const numeroAleatorio = Math.floor(100000000 + Math.random() * 900000000);
+  return prefijo + numeroAleatorio; 
 }
 
 form.addEventListener("submit", async (e) => {
@@ -40,7 +40,6 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  // 🔢 Generar número de cuenta aleatorio (9 dígitos)
   const numeroCuenta = Math.floor(100000000 + Math.random() * 900000000).toString();
 
   try {
@@ -58,10 +57,8 @@ form.addEventListener("submit", async (e) => {
       creado: new Date().toISOString()
     });
 
-    // Guardar el ID del usuario en localStorage para usarlo en PreCuenta
     localStorage.setItem("idUsuario", identificacion);
 
-    // ✅ Redirigir a la vista de la cuenta
     window.location.href =  "/Temples/preCuenta.html";
 
   } catch (error) {

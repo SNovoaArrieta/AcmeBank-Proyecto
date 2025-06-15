@@ -25,7 +25,7 @@
     if (docSnap.exists()) {
       const datos = docSnap.data();
 
-      // 🧾 Mostrar los datos en la tarjeta
+      
       document.getElementById("nombreUsuario").textContent = `${datos.nombre} ${datos.apellidos}`;
       document.getElementById("numeroCuenta").textContent = `#${datos.numeroCuenta}`;
 
@@ -36,6 +36,7 @@
         year: "numeric"
       });
       document.getElementById("fechaRegistro").textContent = fechaFormateada;
+
 
     } else {
       console.error("❌ No se encontró el usuario.");

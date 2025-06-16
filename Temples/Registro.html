@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8" />
+ <title>ACME BANK</title>
+ <link rel="stylesheet" href="/Static/CSS/registro.css">
+</head>
+<body>
+ <div class="container">
+   <div class="logo">
+     <img src="/Static/img/d52f977512.png" alt="Logo">
+   </div>
+
+
+   <form id="formUsuario">
+     <input type="text" id="nombre" placeholder="NOMBRE" required />
+     <input type="text" id="apellidos" placeholder="APELLIDOS" required />
+
+
+     <select id="tipoId" required>
+       <option value="">TIPO DE IDENTIFICACION</option>
+       <option value="CC">CC</option>
+       <option value="TI">TI</option>
+       <option value="CE">CE</option>
+     </select>
+
+
+     <input type="text" id="identificacion" placeholder="IDENTIFICACION" required />
+
+
+     <select id="genero" required>
+       <option value="">GENERO</option>
+       <option value="Masculino">Masculino</option>
+       <option value="Femenino">Femenino</option>
+       <option value="Otro">Otro</option>
+     </select>
+
+
+     <input type="tel" id="telefono" placeholder="TELEFONO" required />
+     <input type="email" id="correo" placeholder="CORREO ELECTRONICO" required />
+     <input type="text" id="direccion" placeholder="DIRECCION" required />
+     <input type="password" id="contrasena" placeholder="CONTRASEÑA" required />
+     <input type="password" id="confirmarContrasena" placeholder="CONFIRMAR CONTRASEÑA" required />
+
+<a href="/Temples/preCuenta.html"> <button type="submit">ENVIAR</button></a>
+     
+    <a href="/Temples/inicio.html"><button type="button" class="cancelar">CANCELAR</button></a> 
+   </form>
+ </div>
+
+
+ <script type="module" src="/Static/JS/registro.js"></script>
+</body>
+</html>

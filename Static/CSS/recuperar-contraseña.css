@@ -1,0 +1,303 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+main {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  display: none;
+}
+
+form#form-recuperar {
+  background-color: #1700ff;
+  padding: 50px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0 0 20px 20px;
+}
+
+#logo {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo img {
+  width: 600px;
+  height: 50px;
+  object-fit: contain;
+  margin-top: 10px;
+}
+
+
+form#form-recuperar label {
+  display: none;
+}
+
+form#form-recuperar select,
+form#form-recuperar input {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 12px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+}
+
+form#form-recuperar button[type="submit"],
+form#form-recuperar button#btn-cancelar {
+  width: 200px;
+  padding: 12px 24px;
+  margin: 15px auto 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form#form-recuperar button[type="submit"] {
+  background-color: #f7f7f7;
+  color: rgb(0, 0, 0);
+}
+
+form#form-recuperar button[type="submit"]:hover {
+  background-color: #0d00b2;
+}
+
+form#form-recuperar button#btn-cancelar {
+  background-color: white;
+  color: #1700ff;
+  border: 2px solid #1700ff;
+  margin-top: 10px;
+}
+
+form#form-recuperar button#btn-cancelar:hover {
+  background-color: #f0f0f0;
+}
+
+#mensaje {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ccc;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+main {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+#logo img {
+  max-width: 80px;
+  margin-bottom: 10px;
+}
+
+#logo h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form label {
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 480px) {
+  .form-row {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+button {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:disabled {
+  background-color: #ddd;
+  color: #888;
+  cursor: not-allowed;
+  border: none;
+}
+
+#btn-cambiar {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+#btn-cambiar:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+#btn-cancelar {
+  background-color: transparent;
+  border: 2px solid #007bff;
+  color: #007bff;
+  margin-top: 10px;
+}
+
+#btn-cancelar:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+#mensaje {
+  margin-top: 20px;
+  color: #e63946;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Tablet (mínimo 768px) */
+@media (min-width: 768px) {
+  .contenido {
+    flex-direction: row;
+  }
+  .contenido article {
+    flex: 1;
+  }
+}
+
+/* Computadora (mínimo 1024px) */
+@media (min-width: 1024px) {
+  body {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero {
+    padding: 3rem 2rem;
+  }
+  .contenido {
+    gap: 2rem;
+  }
+}
+
+
+/* Estilos base (mobile-first) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  padding: 1rem;
+  background-color: #f8f8f8;
+}
+header, footer {
+  background: #005f99;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+.hero {
+  background: #dbefff;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contenido article {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+

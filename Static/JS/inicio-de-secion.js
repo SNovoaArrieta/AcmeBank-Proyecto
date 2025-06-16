@@ -1,4 +1,3 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
@@ -40,7 +39,7 @@ formLogin.addEventListener("submit", async (e) => {
         localStorage.setItem("numeroCuenta", usuario.numeroCuenta || "");
 
         // Redirigir al inicio
-        window.location.href = "inicio.html";
+        window.location.href = "../HTML/inicio.html";
       } else {
         mensaje.textContent = "❌ Contraseña incorrecta.";
         mensaje.style.color = "red";

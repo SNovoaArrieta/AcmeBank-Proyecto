@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ACME Bank</title>
-  <link rel="stylesheet" href="/Static/CSS/Inicio.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión - ACME Bank</title>
+  <link rel="stylesheet" href="/Static/CSS/inicio-sesion.css">
 </head>
 <body>
-
   <div class="container">
-    <div class="top-section">
-      <h1>BIENVENIDO</h1>
+    <div class="form-box">
       <div class="logo">
-  <img src="/Static/img/d52f977512 (1).png" class="logo-img" alt="Logo ACME">
+        <img src="/Static/img/d52f977512.png" alt="Logo">
       </div>
-    </div>
+      <form id="formLogin">
+        <select id="tipoId" required>
+          <option value="">TIPO DE IDENTIFICACIÓN</option>
+          <option value="CC">CC</option>
+          <option value="TI">TI</option>
+          <option value="CE">CE</option>
+        </select>
 
-    <div class="middle-section"></div>
+        <input type="text" id="identificacion" class="input" placeholder="IDENTIFICACIÓN" required />
+        <input type="password" id="contrasena" class="input" placeholder="CONTRASEÑA" required />
 
-    <div class="bottom-section">
-      <a href="/Temples/inicio-secion.html">
-          <button class="btn">INICIAR SESIÓN</button>
-      </a>
-     <a href="/Temples/Registro.html">
-        <button class="btn">CREAR CUENTA</button>
-     </a>
-    
+        <button type="submit" class="submit-btn">INGRESAR</button>
+
+        <p id="mensaje"></p>
+      </form>
+
+      <a href="/Temples/recuperar-contraseña.html">¿Olvidaste tu contraseña?</a>
     </div>
   </div>
 
+  <script type="module" src="/Static/JS/inicio-de-secion.js"></script>
 </body>
 </html>

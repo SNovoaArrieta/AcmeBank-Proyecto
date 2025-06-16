@@ -74,7 +74,9 @@ window.addEventListener("click", function (e) {
 // ✅ Función para cerrar sesión
 window.cerrarSesion = function () {
     localStorage.removeItem("idUsuario");
+<<<<<<< HEAD
     window.location.href = "inicio-secion.html";
+=======
+    window.location.href = "../Temples/inicio-secion.html";
+>>>>>>> Brayan
 };
-
-cargarDatosUsuario();

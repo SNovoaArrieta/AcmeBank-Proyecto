@@ -121,7 +121,6 @@
             height: 28px;
         }
 
-        /* Menú desplegable */
         .menu-desplegable {
             position: absolute;
             top: 65px;
@@ -176,7 +175,7 @@
             <div class="icono menu-icono" onclick="toggleMenu()">
                 <img src="img/preferencias.png" alt="Menú">
             </div>
-            <div class="icono config-icono">
+            <div class="icono config-icono" onclick="cerrarSesion()">
                 <img src="img/engranaje.png" alt="Configuración">
             </div>
             <div class="logo">
@@ -223,7 +222,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
         import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-        // Configuración de Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
             authDomain: "acme-bank-a0686.firebaseapp.com",
@@ -236,10 +234,8 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Obtener ID del usuario desde localStorage
         const idUsuario = localStorage.getItem("idUsuario");
 
-        // Función para mostrar saldo formateado
         function mostrarSaldo(valor) {
             const saldoFormateado = Number(valor).toLocaleString("es-CO", {
                 style: "currency",
@@ -249,7 +245,6 @@
             document.getElementById("saldoDisponible").textContent = saldoFormateado;
         }
 
-        // Cargar los datos del usuario y saldo
         async function cargarDatosUsuario() {
             if (!idUsuario) {
                 console.error("No hay ID de usuario en localStorage");
@@ -267,18 +262,14 @@
 
                 const datos = docSnap.data();
 
-                // Mostrar nombre y número de cuenta
                 document.getElementById("nombreUsuario").textContent = datos.nombre?.toUpperCase() || "USUARIO";
                 document.getElementById("numeroCuenta").textContent = `# ${datos.numeroCuenta || "00000000"}`;
 
                 let saldo = datos.saldo;
 
                 if (!saldo || saldo === 0) {
-                    // Si no existe o es 0, generar uno aleatorio y guardarlo
                     saldo = Math.floor(Math.random() * (999000 - 100000 + 1)) + 100000;
-
                     await updateDoc(docRef, { saldo });
-
                     localStorage.setItem("saldoDisponible", saldo);
                 }
 
@@ -288,7 +279,6 @@
             }
         }
 
-        // Menú desplegable
         window.toggleMenu = function () {
             const menu = document.getElementById("menuDesplegable");
             menu.style.display = menu.style.display === "flex" ? "none" : "flex";
@@ -302,7 +292,12 @@
             }
         });
 
-        // Cargar datos al iniciar
+        // ✅ Función para cerrar sesión
+        window.cerrarSesion = function () {
+            localStorage.removeItem("idUsuario");
+            window.location.href = "iniciodesesion.html";
+        };
+
         cargarDatosUsuario();
     </script>
 

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comprobante Extracto</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .comprobante {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            max-width: 420px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #025BFF;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .boton {
+            display: block;
+            margin: 20px auto 0;
+            padding: 12px 25px;
+            background-color: #025BFF;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background-color: #0146c0;
+        }
+
+        .transacciones {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .transacciones h3 {
+            color: #025BFF;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .transaccion {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #444;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        .transaccion:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="comprobante">
+        <h2>Extracto Bancario</h2>
+        <p class="info"><span class="label">Nombre:</span> <span id="nombreUsuario"></span></p>
+        <p class="info"><span class="label">Número de Cuenta:</span> <span id="numeroCuenta"></span></p>
+        <p class="info"><span class="label">Año seleccionado:</span> <span id="anioSeleccionado"></span></p>
+        <p class="info"><span class="label">Fecha de generación:</span> <span id="fechaActual"></span></p>
+
+        <button class="boton" onclick="window.print()">Imprimir</button>
+    </div>
+
+    <div class="transacciones">
+        <h3>Transacciones del año</h3>
+        <div id="transacciones"></div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script>
+        // Configura tu Firebase
+        const firebaseConfig = {
+            apiKey: "TU_API_KEY",
+            authDomain: "TU_AUTH_DOMAIN",
+            projectId: "TU_PROJECT_ID",
+            storageBucket: "TU_BUCKET",
+            messagingSenderId: "TU_SENDER_ID",
+            appId: "TU_APP_ID"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+
+    <script>
+        const nombre = localStorage.getItem("nombreUsuario") || "No disponible";
+        const cuenta = localStorage.getItem("numeroCuenta") || "No disponible";
+        const anio = localStorage.getItem("anioSeleccionado") || "Sin año";
+        const fecha = new Date().toLocaleDateString();
+
+        document.getElementById("nombreUsuario").textContent = nombre.toUpperCase();
+        document.getElementById("numeroCuenta").textContent = cuenta;
+        document.getElementById("anioSeleccionado").textContent = anio;
+        document.getElementById("fechaActual").textContent = fecha;
+
+        // Mostrar transacciones del año seleccionado
+        const contenedor = document.getElementById("transacciones");
+
+        db.collection("transacciones")
+            .where("usuario", "==", cuenta)
+            .get()
+            .then(snapshot => {
+                let hayDatos = false;
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const fechaDoc = data.fecha.toDate();
+                    const anioDoc = fechaDoc.getFullYear();
+
+                    if (anioDoc == anio) {
+                        hayDatos = true;
+                        const item = document.createElement("div");
+                        item.classList.add("transaccion");
+                        item.innerHTML = `
+              <strong>${data.tipo.toUpperCase()}</strong><br>
+              Concepto: ${data.concepto}<br>
+              Valor: $${data.valor}<br>
+              Fecha: ${fechaDoc.toLocaleDateString()}
+            `;
+                        contenedor.appendChild(item);
+                    }
+                });
+
+                if (!hayDatos) {
+                    contenedor.innerHTML = "<p>No se encontraron transacciones para el año seleccionado.</p>";
+                }
+            })
+            .catch(error => {
+                console.error("Error al obtener transacciones:", error);
+                contenedor.innerHTML = "<p>Error al cargar las transacciones.</p>";
+            });
+    </script>
+</body>
+
+</html>

@@ -234,7 +234,10 @@
     <!-- Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import {
+            getFirestore, doc, collection, addDoc, getDoc, updateDoc,
+            Timestamp // ✅ Importamos Timestamp
+        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
@@ -248,13 +251,30 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
+        // Obtener datos del usuario desde localStorage
+        const nombre = localStorage.getItem("nombreUsuario");
+        const cuenta = localStorage.getItem("numeroCuenta");
+        const identificacion = localStorage.getItem("identificacionUsuario");
+
+        if (nombre) {
+            document.getElementById("nombreusuario4").textContent = nombre;
+        }
+        if (cuenta) {
+            document.getElementById("cuentausuario4").textContent = `Cuenta N° ${cuenta}`;
+        }
+
+                    // Acción del botón CANCELAR
+            document.getElementById("botoncancelar5").addEventListener("click", () => {
+                window.location.href = "inicio.html";
+            });
+
         document.getElementById("botonaceptar5").addEventListener("click", async () => {
             const servicio = document.getElementById("opciones").value;
             const referenciaFactura = document.getElementById("referencia").value;
-            const valorFactura = document.getElementById("valorfactura").value;
+            const valorFactura = parseFloat(document.getElementById("valorfactura").value);
 
-            if (!servicio || !referenciaFactura || !valorFactura) {
-                alert("Por favor completa todos los campos.");
+            if (!servicio || !referenciaFactura || isNaN(valorFactura) || valorFactura <= 0) {
+                alert("Por favor completa todos los campos con valores válidos.");
                 return;
             }
 
@@ -265,44 +285,62 @@
                 4: "Internet"
             };
 
-            const fecha = new Date().toLocaleString("es-CO");
-            const referenciaAleatoria = "REF" + Math.floor(Math.random() * 1000000000);
-            const tipoTransaccion = "Pago de servicios";
+            const referencia = "REF" + Math.floor(Math.random() * 1000000000);
+            const tipo = "Pago de servicios";
             const concepto = `Pago de servicio público ${serviciosNombres[servicio]}`;
-            const valor = parseFloat(valorFactura);
+            const valor = valorFactura;
+
+            // ✅ Guardamos la fecha como timestamp en Firestore
+            const fecha = Timestamp.now();
 
             const datos = {
                 fecha,
-                referencia: referenciaAleatoria,
-                tipo: tipoTransaccion,
+                referencia,
+                tipo,
                 concepto,
                 valor
             };
 
-            localStorage.setItem("comprobanteServicio", JSON.stringify(datos));
-            window.open("comprobante.html", "_blank");
+            // ✅ Guardamos también en localStorage pero como string legible para mostrar en comprobante
+            localStorage.setItem("comprobante", JSON.stringify({
+                fecha: new Date().toLocaleString("es-CO"),
+                referencia,
+                tipo,
+                concepto,
+                valor
+            }));
 
             try {
-                await addDoc(collection(db, "transacciones"), datos);
-                console.log("Transacción guardada en Firebase.");
+                const usuarioRef = doc(db, "usuarios", identificacion);
+                const usuarioSnap = await getDoc(usuarioRef);
+
+                if (!usuarioSnap.exists()) {
+                    alert("⚠️ No se encontró el usuario en Firebase.");
+                    return;
+                }
+
+                const datosUsuario = usuarioSnap.data();
+                const saldoActual = datosUsuario.saldo || 0;
+
+                if (saldoActual < valor) {
+                    alert("⚠️ Saldo insuficiente para realizar este pago.");
+                    return;
+                }
+
+                const nuevoSaldo = saldoActual - valor;
+                await updateDoc(usuarioRef, { saldo: nuevoSaldo });
+
+                const transaccionesRef = collection(usuarioRef, "transacciones");
+                await addDoc(transaccionesRef, datos);
+
+                console.log("✅ Transacción de servicio guardada en Firebase.");
+                window.open("comprobante.html", "_blank");
+
             } catch (error) {
-                console.error("Error al guardar en Firebase:", error);
+                console.error("❌ Error al guardar en Firebase:", error);
+                alert("Error al guardar la transacción.");
             }
         });
-    </script>
-
-    <!-- Script para cargar nombre y cuenta desde localStorage -->
-    <script>
-        const nombre = localStorage.getItem("nombreUsuario");
-        const cuenta = localStorage.getItem("numeroCuenta");
-
-        if (nombre) {
-            document.getElementById("nombreusuario4").textContent = nombre;
-        }
-
-        if (cuenta) {
-            document.getElementById("cuentausuario4").textContent = `Cuenta N° ${cuenta}`;
-        }
     </script>
 </body>
 

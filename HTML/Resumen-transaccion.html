@@ -2,282 +2,270 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resumen Transacciones Bancarias</title>
-    <link rel="icon" href="img/d52f977512.png" type="image/png" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resumen Transacciones Bancarias</title>
+  <link rel="icon" href="img/d52f977512.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+    .contenedor-resumen {
+      width: 100%;
+      max-width: 500px;
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
 
-        .contenedor-resumen {
-            width: 100%;
-            max-width: 500px;
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
+    .encabezado-resumen {
+      background-color: #025BFF;
+      text-align: center;
+      padding: 25px 15px;
+      color: white;
+    }
 
-        .encabezado-resumen {
-            background-color: #025BFF;
-            text-align: center;
-            padding: 25px 15px;
-            color: white;
-        }
+    .encabezado-resumen h1 {
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
 
-        .encabezado-resumen h1 {
-            font-size: 20px;
-            letter-spacing: 1px;
-        }
+    .imagen-resumen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+    }
 
-        .imagen-resumen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 0;
-        }
+    .imagen-resumen img {
+      width: 140px;
+    }
 
-        .imagen-resumen img {
-            width: 140px;
-        }
+    .resumen-transacciones {
+      padding: 20px;
+      font-size: 14px;
+      color: #333;
+      border-top: 1px solid #ccc;
+    }
 
-        .resumen-transacciones {
-            padding: 20px;
-            text-align: left;
-            font-size: 14px;
-            color: #333;
-            border-top: 1px solid #ccc;
-        }
+    .transaccion {
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
 
-        .resumen-transacciones p {
-            margin: 10px 0;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 8px;
-        }
+    .transaccion p {
+      margin: 5px 0;
+    }
 
-        .botones-resumen {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px 20px;
-        }
+    .botones-resumen {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px 20px;
+    }
 
-        .botones-resumen button {
-            flex: 1;
-            padding: 12px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            background-color: #0b2961;
-        }
+    .botones-resumen button {
+      flex: 1;
+      padding: 12px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      background-color: #0b2961;
+    }
 
-        .botones-resumen button:hover {
-            background-color: #2060d6;
-        }
+    .botones-resumen button:hover {
+      background-color: #2060d6;
+    }
 
-        .barra-interna-opciones {
-            margin: 20px auto 1px;
-            padding: 15px 10px;
-            background-color: #025BFF;
-            border-radius: 20px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-        }
+    .barra-interna-opciones {
+      margin: 20px auto 1px;
+      padding: 15px 10px;
+      background-color: #025BFF;
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+    }
 
-        .barra-interna-opciones .opcion {
-            width: 70px;
-            height: 70px;
-            background-color: #e0e0e0;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.2s ease;
-        }
+    .barra-interna-opciones .opcion {
+      width: 70px;
+      height: 70px;
+      background-color: #e0e0e0;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s ease;
+    }
 
-        .barra-interna-opciones .opcion:hover {
-            transform: scale(1.05);
-        }
+    .barra-interna-opciones .opcion:hover {
+      transform: scale(1.05);
+    }
 
-        .barra-interna-opciones img {
-            width: 36px;
-            height: 36px;
-            object-fit: contain;
-        }
+    .barra-interna-opciones img {
+      width: 36px;
+      height: 36px;
+    }
 
-        @media (max-width: 480px) {
-            .encabezado-resumen h1 {
-                font-size: 18px;
-            }
+    @media print {
 
-            .imagen-resumen img {
-                width: 100px;
-            }
-        }
-    </style>
+      .botones-resumen,
+      .barra-interna-opciones {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div id="contenedor-resumen" class="contenedor-resumen">
-        <div class="encabezado-resumen">
-            <div class="encabezado-resumen">
-                <h1>RESUMEN TRANSACCIONES</h1>
-                <p id="nombreUsuario" style="margin-top: 10px; font-weight: bold;"></p>
-                <p id="numeroCuenta" style="font-size: 14px;"></p>
-            </div>
-        </div>
-
-
-
-        <div class="imagen-resumen">
-            <img id="imagen1" src="img/transaccion (1).png" alt="Transacción bancaria" />
-        </div>
-        <div class="resumen-transacciones" id="listaTransacciones">
-            <p>Cargando transacciones...</p>
-        </div>
-
-        <div class="botones-resumen">
-            <button id="botonimprimir1">IMPRIMIR</button>
-            <button id="botoncancelar1">CANCELAR</button>
-        </div>
-
-        <!-- Barra inferior -->
-        <div class="barra-interna-opciones">
-            <div class="opcion">
-                <a href="Consignacion.html" title="Consignar">
-                    <img src="img/enviar-dinero.png" alt="Consignar" />
-                </a>
-            </div>
-            <div class="opcion">
-                <a href="inicio.html" title="Retiro">
-                    <img src="img/hogar.png" alt="Retiro" />
-                </a>
-            </div>
-            <div class="opcion">
-                <a href="Retiro.html" title="Servicios">
-                    <img src="img/retiro.png" alt="Servicios" />
-                </a>
-            </div>
-        </div>
+  <div id="contenedor-resumen" class="contenedor-resumen">
+    <div class="encabezado-resumen">
+      <h1>RESUMEN TRANSACCIONES</h1>
+      <p id="nombreUsuario" style="margin-top: 10px; font-weight: bold;"></p>
+      <p id="numeroCuenta" style="font-size: 14px;"></p>
     </div>
-    <script type="module">
-        // Firebase imports
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import {
-            getFirestore,
-            collection,
-            doc,
-            getDoc,
-            getDocs,
-            query,
-            orderBy,
-            limit
-        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
-            authDomain: "acme-bank-a0686.firebaseapp.com",
-            projectId: "acme-bank-a0686",
-            storageBucket: "acme-bank-a0686.firebasestorage.app",
-            messagingSenderId: "302724149232",
-            appId: "1:302724149232:web:9a84221b967416e2933735"
-        };
+    <div class="imagen-resumen">
+      <img src="img/transaccion (1).png" alt="Transacción bancaria" />
+    </div>
 
-        // Inicializa Firebase y Firestore
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+    <div class="resumen-transacciones" id="listaTransacciones">
+      <p>Cargando transacciones...</p>
+    </div>
 
-        const identificacionUsuario = localStorage.getItem("identificacionUsuario");
+    <div class="botones-resumen">
+      <button id="botonimprimir1">IMPRIMIR</button>
+      <button onclick="window.location.href='inicio.html'">CANCELAR</button>
+    </div>
 
-        // ✅ Cargar nombre y cuenta del usuario
-        async function cargarDatosUsuario() {
-            if (!identificacionUsuario) return;
+    <div class="barra-interna-opciones">
+      <div class="opcion">
+        <a href="Consignacion.html" title="Consignar">
+          <img src="img/enviar-dinero.png" alt="Consignar" />
+        </a>
+      </div>
+      <div class="opcion">
+        <a href="inicio.html" title="Inicio">
+          <img src="img/hogar.png" alt="Inicio" />
+        </a>
+      </div>
+      <div class="opcion">
+        <a href="Retiro.html" title="Retiro">
+          <img src="img/retiro.png" alt="Retiro" />
+        </a>
+      </div>
+    </div>
+  </div>
 
-            const docRef = doc(db, "usuarios", identificacionUsuario);
-            const docSnap = await getDoc(docRef);
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    query,
+    orderBy,
+    limit
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-            if (docSnap.exists()) {
-                const datos = docSnap.data();
-                document.getElementById("nombreUsuario").textContent = datos.nombre?.toUpperCase() || "USUARIO";
-                document.getElementById("numeroCuenta").textContent = `Cuenta: # ${datos.numeroCuenta || 'no disponible'}`;
-            } else {
-                document.getElementById("nombreUsuario").textContent = "USUARIO NO ENCONTRADO";
-            }
-        }
+  const firebaseConfig = {
+    apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
+    authDomain: "acme-bank-a0686.firebaseapp.com",
+    projectId: "acme-bank-a0686",
+    storageBucket: "acme-bank-a0686.appspot.com",
+    messagingSenderId: "302724149232",
+    appId: "1:302724149232:web:9a84221b967416e2933735"
+  };
 
-        // ✅ Cargar transacciones
-        async function cargarTransacciones() {
-            const contenedorResumen = document.querySelector(".resumen-transacciones");
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const identificacionUsuario = localStorage.getItem("identificacionUsuario");
 
-            if (!identificacionUsuario) {
-                contenedorResumen.innerHTML = "<p>Usuario no identificado.</p>";
-                return;
-            }
+  async function cargarDatosUsuario() {
+    if (!identificacionUsuario) return;
+    const docRef = doc(db, "usuarios", identificacionUsuario);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const datos = docSnap.data();
+      document.getElementById("nombreUsuario").textContent =
+        datos.nombre?.toUpperCase() || "USUARIO";
+      document.getElementById("numeroCuenta").textContent =
+        `Cuenta: # ${datos.numeroCuenta || 'No disponible'}`;
+    } else {
+      document.getElementById("nombreUsuario").textContent = "USUARIO NO ENCONTRADO";
+    }
+  }
 
-            const transaccionesRef = collection(doc(db, "usuarios", identificacionUsuario), "transacciones");
-            const q = query(transaccionesRef, orderBy("fecha", "desc"), limit(10));
+  async function cargarTransacciones() {
+    const contenedor = document.getElementById("listaTransacciones");
 
-            try {
-                const snapshot = await getDocs(q);
+    if (!identificacionUsuario) {
+      contenedor.innerHTML = "<p>Usuario no identificado.</p>";
+      return;
+    }
 
-                if (snapshot.empty) {
-                    contenedorResumen.innerHTML = "<p>No hay transacciones registradas.</p>";
-                    return;
-                }
+    const transRef = collection(doc(db, "usuarios", identificacionUsuario), "transacciones");
+    const q = query(transRef, orderBy("fecha", "desc"), limit(10));
 
-                let html = "";
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    const fecha = new Date(data.fecha.seconds * 1000).toLocaleString();
-                    html += `
-                    <p><strong>Fecha:</strong> ${fecha}</p>
-                    <p><strong>Referencia:</strong> ${data.referencia}</p>
-                    <p><strong>Tipo:</strong> ${data.tipo}</p>
-                    <p><strong>Concepto:</strong> ${data.concepto}</p>
-                    <p><strong>Valor:</strong> $${data.valor.toLocaleString()}</p>
-                    <hr/>
-                `;
-                });
+    try {
+      const snapshot = await getDocs(q);
+      if (snapshot.empty) {
+        contenedor.innerHTML = "<p>No hay transacciones registradas.</p>";
+        return;
+      }
 
-                contenedorResumen.innerHTML = html;
+      let html = "";
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const fecha = typeof data.fecha === "string" ? data.fecha : "Fecha no disponible";
+        html += `
+          <div class="transaccion">
+            <p><strong>Fecha:</strong> ${fecha}</p>
+            <p><strong>Referencia:</strong> ${data.referencia}</p>
+            <p><strong>Tipo:</strong> ${data.tipo}</p>
+            <p><strong>Concepto:</strong> ${data.concepto}</p>
+            <p><strong>Valor:</strong> $${data.valor.toLocaleString()}</p>
+          </div>`;
+      });
 
-            } catch (error) {
-                contenedorResumen.innerHTML = "<p>Error cargando transacciones.</p>";
-                console.error("Error obteniendo transacciones:", error);
-            }
-        }
+      contenedor.innerHTML = html;
+    } catch (e) {
+      console.error("Error obteniendo transacciones:", e);
+      contenedor.innerHTML = "<p>Error cargando transacciones.</p>";
+    }
+  }
 
-        // Ejecutar funciones
-        cargarDatosUsuario();
-        cargarTransacciones();
+  document.getElementById("botonimprimir1").addEventListener("click", () => {
+    window.print();
+  });
 
-        // Botón imprimir
-        document.getElementById("botonimprimir1").addEventListener("click", () => {
-            window.print();
-        });
-    </script>
+  cargarDatosUsuario();
+  cargarTransacciones();
+</script>
+
 </body>
 
 </html>

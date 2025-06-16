@@ -74,7 +74,5 @@ window.addEventListener("click", function (e) {
 // ✅ Función para cerrar sesión
 window.cerrarSesion = function () {
     localStorage.removeItem("idUsuario");
-    window.location.href = "iniciodesesion.html";
+    window.location.href = "../Temples/inicio-secion.html";
 };
-
-cargarDatosUsuario();

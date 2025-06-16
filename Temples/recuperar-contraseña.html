@@ -18,15 +18,16 @@
       <label for="tipoId">Tipo de identificación:</label>
       <select id="tipoId" required>
         <option value="">Seleccione</option>
-        <option value="CC">Cédula</option>
+        <option value="CC">Cédula de ciudadania</option>
         <option value="TI">Tarjeta de Identidad</option>
+        <option value="CE">Cedula Extranjera</option>
       </select>
 
       <label for="identificacion">Número de identificación:</label>
-      <input type="text" id="identificacion" required>
+      <input type="text" id="identificacion" required placeholder="Identificacion">
 
       <label for="correo">Correo electrónico:</label>
-      <input type="email" id="correo" required>
+      <input type="email" id="correo" required placeholder="Correo electronico">
 
       <button type="submit">Verificar datos</button>
       <button type="button" id="btn-cancelar">Cancelar</button>

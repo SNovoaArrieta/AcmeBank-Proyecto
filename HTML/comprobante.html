@@ -4,30 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Comprobante de Retiro</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-
-        h2 {
-            color: green;
-        }
-
-        p {
-            margin: 8px 0;
-        }
-
-        button {
-            padding: 10px;
-            background-color: #025BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="../CSS/comprobante.css">
 </head>
 
 <body>
@@ -40,18 +17,6 @@
 
     <button onclick="window.print()">🖨️ Imprimir</button>
 
-    <script>
-        const datos = JSON.parse(localStorage.getItem('comprobante'));
-        if (datos) {
-            document.getElementById('fecha').textContent = `📅 Fecha: ${datos.fecha}`;
-            document.getElementById('referencia').textContent = `🔢 Referencia: ${datos.referencia}`;
-            document.getElementById('tipo').textContent = `💳 Tipo: ${datos.tipo}`;
-            document.getElementById('concepto').textContent = `📝 Concepto: ${datos.concepto}`;
-            document.getElementById('valor').textContent = `💰 Valor: $${datos.valor.toFixed(2)}`;
-        } else {
-            document.body.innerHTML = '<h3>No hay datos del comprobante.</h3>';
-        }
-    </script>
+<script type="module" src="../JS/comprobante.js"></script>
 </body>
-
 </html>

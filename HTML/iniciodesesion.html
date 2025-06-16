@@ -192,7 +192,12 @@
                     if (usuario.contrasena === contrasena) {
                         mensaje.textContent = "✅ Acceso concedido.";
                         mensaje.style.color = "green";
+
+                        // Guardar los datos del usuario actual en localStorage
                         localStorage.setItem("idUsuario", identificacion);
+                        localStorage.setItem("nombreUsuario", usuario.nombre); // 👈 este campo debe existir en Firebase
+                        localStorage.setItem("numeroCuenta", usuario.numeroCuenta); // 👈 este también
+
                         window.location.href = "inicio.html";
                     } else {
                         mensaje.textContent = "❌ Contraseña incorrecta.";

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio - ACME BANK</title>
+    <link rel="stylesheet" href="../CSS/inicio.css">
+</head>
+
+<body>
+    <div class="contenedor">
+        <div class="encabezado">
+            <div class="icono menu-icono" onclick="toggleMenu()">
+                <img src="img/preferencias.png" alt="Menú">
+            </div>
+            <div class="icono config-icono" onclick="cerrarSesion()">
+                <img src="img/engranaje.png" alt="Configuración">
+            </div>
+            <div class="logo">
+                <img src="img/d52f977512.png" alt="ACME BANK">
+            </div>
+            <div class="usuario">
+                <p>HOLA <strong id="nombreUsuario">“USUARIO”</strong><br>
+                    <span style="font-weight: normal;" id="numeroCuenta"># cuenta</span>
+                </p>
+            </div>
+
+            <!-- Menú desplegable -->
+            <div class="menu-desplegable" id="menuDesplegable">
+                <a href="inicio.html">Página de inicio</a>
+                <a href="Consignacion.html">Consignación Bancaria</a>
+                <a href="Retiro.html">Retiro Bancario</a>
+                <a href="Pago-servicios.html">Pago de servicios</a>
+                <a href="Extracto-bancario.html">Extracto Bancario</a>
+                <a href="certificado.html">Certificado Bancario</a>
+                <a href="Resumen-transaccion.html">Resumen transacciones</a>
+            </div>
+        </div>
+
+        <div class="saldo-box">
+            <p>Saldo disponible<br>
+                <span id="saldoDisponible">$ xxx.xxx</span>
+            </p>
+        </div>
+
+        <div class="botones-footer">
+            <button onclick="window.location.href='Consignacion.html'">
+                <img src="img/enviar-dinero.png" alt="Pago">
+            </button>
+            <button onclick="window.location.href='inicio.html'">
+                <img src="img/hogar.png" alt="Inicio">
+            </button>
+            <button onclick="window.location.href='Retiro.html'">
+                <img src="img/retiro.png" alt="Retiro">
+            </button>
+        </div>
+    </div>
+<script type="module" src="../JS/inicio.js"></script>
+</body>
+
+</html>

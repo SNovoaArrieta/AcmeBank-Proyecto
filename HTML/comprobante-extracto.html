@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comprobante Extracto</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="../CSS/comprobante-extracto.css">
+</head>
+
+<body>
+    <div class="comprobante">
+        <h2>Extracto Bancario</h2>
+        <p class="info"><span class="label">Nombre:</span> <span id="nombreUsuario"></span></p>
+        <p class="info"><span class="label">Número de Cuenta:</span> <span id="numeroCuenta"></span></p>
+        <p class="info"><span class="label">Año seleccionado:</span> <span id="anioSeleccionado"></span></p>
+        <p class="info"><span class="label">Fecha de generación:</span> <span id="fechaActual"></span></p>
+
+        <button class="boton" onclick="window.print()">Imprimir</button>
+    </div>
+
+    <div class="transacciones">
+        <h3>Transacciones del año</h3>
+        <div id="transacciones"></div>
+    </div>
+
+    <script type="module" src="../JS/comprobante-extracto.js"></script>
+</body>
+
+</html>

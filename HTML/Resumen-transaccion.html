@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resumen Transacciones Bancarias</title>
+  <link rel="icon" href="img/d52f977512.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../CSS/Resumen-transaccion.css">
+</head>
+
+<body>
+  <div id="contenedor-resumen" class="contenedor-resumen">
+    <div class="encabezado-resumen">
+      <h1>RESUMEN TRANSACCIONES</h1>
+      <p id="nombreUsuario" style="margin-top: 10px; font-weight: bold;"></p>
+      <p id="numeroCuenta" style="font-size: 14px;"></p>
+    </div>
+
+    <div class="imagen-resumen">
+      <img src="img/transaccion (1).png" alt="Transacción bancaria" />
+    </div>
+
+    <div class="resumen-transacciones" id="listaTransacciones">
+      <p>Cargando transacciones...</p>
+    </div>
+
+    <div class="botones-resumen">
+      <button id="botonimprimir1">IMPRIMIR</button>
+      <button onclick="window.location.href='inicio.html'">CANCELAR</button>
+    </div>
+
+    <div class="barra-interna-opciones">
+      <div class="opcion">
+        <a href="Consignacion.html" title="Consignar">
+          <img src="img/enviar-dinero.png" alt="Consignar" />
+        </a>
+      </div>
+      <div class="opcion">
+        <a href="inicio.html" title="Inicio">
+          <img src="img/hogar.png" alt="Inicio" />
+        </a>
+      </div>
+      <div class="opcion">
+        <a href="Retiro.html" title="Retiro">
+          <img src="img/retiro.png" alt="Retiro" />
+        </a>
+      </div>
+    </div>
+  </div>
+<script type="module" src="../JS/Resumen-transaccion.js"></script>
+</body>
+
+</html>

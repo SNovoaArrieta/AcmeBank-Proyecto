@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h2 {
+    color: green;
+}
+
+p {
+    margin: 8px 0;
+}
+
+button {
+    padding: 10px;
+    background-color: #025BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}

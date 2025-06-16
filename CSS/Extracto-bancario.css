@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenedor-extracto {
+    width: 100%;
+    max-width: 420px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.encabezado-extracto {
+    background-color: #025BFF;
+    text-align: center;
+    padding: 25px 15px;
+    color: white;
+}
+
+.encabezado-extracto h1 {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.imagen-extracto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.imagen-extracto img {
+    width: 140px;
+}
+
+.datosusuario-extracto {
+    padding: 20px;
+    text-align: center;
+}
+
+.datosusuario-extracto h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.datosusuario-extracto p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.datosusuario-extracto label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
+.datosusuario-extracto input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.datosusuario-extracto input:focus {
+    border-color: #025BFF;
+}
+
+.botones-extracto {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 20px;
+}
+
+.botones-extracto button {
+    flex: 1;
+    padding: 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#botonaceptar4 {
+    background-color: #0b2961;
+}
+
+#botonaceptar4:hover {
+    background-color: #2060d6;
+}
+
+#botoncancelar4 {
+    background-color: #0b2961;
+}
+
+#botoncancelar4:hover {
+    background-color: #2060d6;
+}
+
+.barra-interna-opciones {
+    margin: 20px auto 10px;
+    padding: 15px 10px;
+    background-color: #025BFF;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.barra-interna-opciones .opcion {
+    width: 70px;
+    height: 70px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.barra-interna-opciones .opcion:hover {
+    transform: scale(1.05);
+}
+
+.barra-interna-opciones img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+@media (max-width: 480px) {
+    .encabezado-extracto h1 {
+        font-size: 18px;
+    }
+
+    .datosusuario-extracto h2 {
+        font-size: 16px;
+    }
+
+    .imagen-extracto img {
+        width: 100px;
+    }
+}

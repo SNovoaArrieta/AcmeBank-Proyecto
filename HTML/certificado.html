@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificado Bancario</title>
+    <link rel="stylesheet" href="../CSS/certificado.css">
+</head>
+
+<body>
+    <div class="certificado">
+        <h1>Certificado Bancario</h1>
+        <div class="contenido">
+            <p>El presente documento certifica que el cliente <span id="nombreUsuario">...</span>, identificado con
+                número de cuenta <span id="numeroCuenta">...</span>, mantiene una cuenta activa en nuestra entidad
+                bancaria.</p>
+            <p>Este certificado se expide a solicitud del interesado y no constituye constancia de saldo.</p>
+            <p>Fecha de expedición: <span id="fechaActual">...</span></p>
+        </div>
+
+        <div class="botones">
+            <button class="btn-imprimir" onclick="window.print()">Imprimir certificado</button>
+            <button class="btn-cancelar" onclick="window.location.href='inicio.html'">Cancelar</button>
+        </div>
+    </div>
+<script type="module" src="../JS/certificado.js"></script>
+</body>
+
+</html>

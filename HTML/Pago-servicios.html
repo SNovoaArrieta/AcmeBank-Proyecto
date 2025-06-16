@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago de Servicios</title>
+    <link rel="icon" href="img/d52f977512.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/Pago-servicios.css">
+</head>
+
+<body>
+    <div id="contenedor-servicios" class="contenedor-servicios">
+        <div class="encabezado-servicios">
+            <h1>PAGO DE SERVICIOS</h1>
+        </div>
+
+        <div class="imagen-servicios">
+            <img id="imagen4" src="img/servicios.png" alt="Servicios públicos">
+        </div>
+
+        <div class="datosusuario-servicios">
+            <h2 id="nombreusuario4">USUARIO</h2>
+            <p id="cuentausuario4">Número de cuenta</p>
+
+            <label for="opciones">¿Qué servicio va a pagar?</label>
+            <select id="opciones" name="opciones">
+                <option value="">-- Selecciona --</option>
+                <option value="1">Electricidad</option>
+                <option value="2">Agua</option>
+                <option value="3">Gas</option>
+                <option value="4">Internet</option>
+            </select>
+
+            <label for="referencia">Ingrese la referencia de la factura:</label>
+            <input type="number" id="referencia" name="referencia" placeholder="0000000000">
+
+            <label for="valorfactura">Ingrese el valor a pagar:</label>
+            <input type="number" id="valorfactura" name="valorfactura" placeholder="$0,00">
+        </div>
+
+        <div class="botones-servicios">
+            <button id="botonaceptar5">ACEPTAR</button>
+            <button id="botoncancelar5">CANCELAR</button>
+        </div>
+
+        <!-- Barra inferior fija con botón -->
+        <div class="barra-interna-opciones">
+            <div class="opcion">
+                <a href="Consignacion.html" title="Consignar">
+                    <img src="img/enviar-dinero.png" alt="Consignar">
+                </a>
+            </div>
+            <div class="opcion">
+                <a href="inicio.html" title="Historial">
+                    <img src="img/hogar.png" alt="Historial">
+                </a>
+            </div>
+            <div class="opcion">
+                <a href="Retiro.html" title="Retirar">
+                    <img src="img/retiro.png" alt="Retirar">
+                </a>
+            </div>
+        </div>
+    </div>
+<script type="module" src="../JS/Pago-servicios.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f6f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .contenedor-resumen {
+        width: 100%;
+        max-width: 500px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .encabezado-resumen {
+        background-color: #025BFF;
+        text-align: center;
+        padding: 25px 15px;
+        color: white;
+    }
+
+    .encabezado-resumen h1 {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .imagen-resumen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .imagen-resumen img {
+        width: 140px;
+    }
+
+    .resumen-transacciones {
+        padding: 20px;
+        font-size: 14px;
+        color: #333;
+        border-top: 1px solid #ccc;
+    }
+
+    .transaccion {
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .transaccion p {
+        margin: 5px 0;
+    }
+
+    .botones-resumen {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px 20px;
+    }
+
+    .botones-resumen button {
+        flex: 1;
+        padding: 12px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        background-color: #0b2961;
+    }
+
+    .botones-resumen button:hover {
+        background-color: #2060d6;
+    }
+
+    .barra-interna-opciones {
+        margin: 20px auto 1px;
+        padding: 15px 10px;
+        background-color: #025BFF;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+    }
+
+    .barra-interna-opciones .opcion {
+        width: 70px;
+        height: 70px;
+        background-color: #e0e0e0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s ease;
+    }
+
+    .barra-interna-opciones .opcion:hover {
+        transform: scale(1.05);
+    }
+
+    .barra-interna-opciones img {
+        width: 36px;
+        height: 36px;
+    }
+
+    @media print {
+
+        .botones-resumen,
+        .barra-interna-opciones {
+            display: none;
+        }
+    }

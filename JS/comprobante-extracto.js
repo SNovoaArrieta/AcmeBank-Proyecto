@@ -1,8 +1,13 @@
-// JS/comprobante-extracto.js
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-// 🔐 Configura tu Firebase
+// 🔐 Configuración de Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyAyVF_iOgpDKTQco5Y9ZqmURB0YAd6TMhs",
     authDomain: "acme-bank-a0686.firebaseapp.com",
@@ -12,7 +17,7 @@ const firebaseConfig = {
     appId: "1:302724149232:web:9a84221b967416e2933735"
 };
 
-// Inicializa Firebase
+// Inicializa Firebase y Firestore
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -28,14 +33,17 @@ document.getElementById("numeroCuenta").textContent = cuenta;
 document.getElementById("anioSeleccionado").textContent = anio;
 document.getElementById("fechaActual").textContent = fecha;
 
-// Transacciones del año seleccionado
+// Contenedor de transacciones
 const contenedor = document.getElementById("transacciones");
 
-db.collection("transacciones")
-    .where("usuario", "==", cuenta)
-    .get()
+// Consulta a Firestore
+const transaccionesRef = collection(db, "transacciones");
+const q = query(transaccionesRef, where("usuario", "==", cuenta));
+
+getDocs(q)
     .then(snapshot => {
         let hayDatos = false;
+
         snapshot.forEach(doc => {
             const data = doc.data();
             const fechaDoc = data.fecha.toDate();
@@ -43,6 +51,7 @@ db.collection("transacciones")
 
             if (anioDoc == anio) {
                 hayDatos = true;
+
                 const item = document.createElement("div");
                 item.classList.add("transaccion");
                 item.innerHTML = `
